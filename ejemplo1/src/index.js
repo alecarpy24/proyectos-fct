@@ -1,46 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Ejemplo1 from './ejemplo-1/ejemplo-1';
+import App1 from './ejemplo-2/ejemplo-2';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { contador: 0 };
-  }
-  render() {
-    return (
-      <div>
-        <Contador contador={this.state.contador} />
-        <BotonIncrementar contador={this.state.contador} incrementar={(contador) => this.setState({contador})}/>
-          <BotonDecrementar contador={this.state.contador} decrementar={(contador) => this.setState({contador})}/>
-      </div>
-    );
-  }
-}
 
-const Contador = ({ contador }) => {
-  return (
-    <div className='contador'>Contador actual: {contador}</div>
-  )
-}
-const BotonIncrementar =({contador, incrementar}) =>{
-  return(
-    <button onClick={() =>incrementar(contador+1)}>+</button>
-  )
-}
-
-const BotonDecrementar =({contador, decrementar}) =>{
-  return(
-    <button onClick={() => decrementar(contador - 1)}>-</button>
-  )
-}
 //------------------------
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App1/>
   </React.StrictMode>
 );
 
