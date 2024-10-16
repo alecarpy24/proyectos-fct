@@ -14,11 +14,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      # Move into the react-rick-and-morty subdirectory
-      - name: Set working directory
-        run: echo "Working directory: $(pwd)"
-      
-      # Set the working directory for the following steps
+      # Install dependencies with Yarn in the react-rick-and-morty directory
       - name: Install dependencies with Yarn
         run: yarn install
         working-directory: ./react-rick-and-morty
