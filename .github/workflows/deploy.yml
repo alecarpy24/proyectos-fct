@@ -17,20 +17,25 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Ensure correct Node version if necessary
+          node-version: '16'  # or whichever version you're using
           cache: 'yarn'
 
+      # Navigate to the subdirectory and install dependencies
       - name: Install dependencies
         run: yarn install
+        working-directory: ./react/react-rick-and-morty
 
+      # Build the project from the subdirectory
       - name: Build project
         run: yarn build
+        working-directory: ./react/react-rick-and-morty
 
+      # Upload the build files from the subdirectory's dist folder
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v3
         with:
           name: production-files
-          path: ./dist
+          path: ./react/react-rick-and-morty/dist
 
   deploy:
     name: Deploy
@@ -39,12 +44,14 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     steps:
+      # Download the build files from the artifact
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
           name: production-files
           path: ./dist
 
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
