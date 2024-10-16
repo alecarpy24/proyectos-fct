@@ -15,15 +15,10 @@ jobs:
         uses: actions/checkout@v3
 
       # Move into the react-rick-and-morty subdirectory
-      - name: Navigate to subdirectory
-        run: cd react-rick-and-morty
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-
-      # Use yarn instead of npm
+      - name: Set working directory
+        run: echo "Working directory: $(pwd)"
+      
+      # Set the working directory for the following steps
       - name: Install dependencies with Yarn
         run: yarn install
         working-directory: ./react-rick-and-morty
